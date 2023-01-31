@@ -1,5 +1,5 @@
 # first step
-docker build -t test .
+docker-compose build --no-cache 
 
 # second step
-docker run -d -p 8000:8000 test
+docker-compose up
