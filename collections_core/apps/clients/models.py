@@ -2,8 +2,8 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
-from apps.db.base_model import Model
-from apps.commons.phone_number import PhoneNumber
+from collections_core.apps.db.base_model import Model
+from collections_core.apps.commons.phone_number import PhoneNumber
 
 
 class User(Model):
@@ -23,17 +23,21 @@ class User(Model):
 
     is_active = Column(Boolean(), default=False)
 
-    message_id = Column(Integer, ForeignKey("message.id"))
-    message = relationship("Parent", back_populates="dispatch")
+    message = relationship("Message", backref="user")
+    message_id = Column(Integer, ForeignKey('message.id'), nullable=True)
 
     @hybrid_property
     def phone_number(self)-> PhoneNumber:
         """getter возвращает обьект класса PhoneNumber"""
         return PhoneNumber.from_string(self._phone_number, region="RU")
 
-
     @phone_number.expression
     def phone_number(cls) -> str:  # noqa
         return cls._phone_number
     
-        
+    def __repr__(self) -> str:
+        return "id:{} email:{} is_active:{}".format(
+            self.id,
+            self.email,
+            self.is_active
+        )

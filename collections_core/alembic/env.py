@@ -19,7 +19,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from apps.db.base import Model
+from collections_core.apps.db.base import Model
 
 
 target_metadata = Model.metadata
@@ -29,7 +29,7 @@ target_metadata = Model.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-from config.config import settings
+from collections_core.config.config import settings
 
 
 def get_url():

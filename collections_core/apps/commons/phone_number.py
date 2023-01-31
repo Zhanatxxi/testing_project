@@ -9,7 +9,7 @@ from phonenumbers import (
 )
 from phonenumbers.phonenumberutil import NumberParseException
 
-from config.config import settings
+from collections_core.config.config import settings
 
 
 class PhoneNumber(BasePhoneNumber):

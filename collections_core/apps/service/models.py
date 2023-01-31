@@ -4,8 +4,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 
-from apps.db.base import Model
-from apps.service.utils import default_time
+from collections_core.apps.db.base import Model
+from collections_core.apps.service.utils import default_time
 
 
 class Dispatch(Model):
@@ -18,8 +18,15 @@ class Dispatch(Model):
 
     tag = Column(Boolean)
 
-    message_id = Column(Integer, ForeignKey("message.id"))
-    message = relationship("Parent", back_populates="dispatch")
+    message_ref = relationship("Message", backref="dispatch")
+    message_id = Column(Integer, ForeignKey('message.id'), nullable=True )
+
+    def __repr__(self) -> str:
+        return "id:{} message: {} ---- tag:{}".format(
+            self.id,
+            self.message,
+            self.tag
+        )
 
 
 class Message(Model):
@@ -28,9 +35,11 @@ class Message(Model):
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=default_time)
     status = Column(Boolean, default=False)
-    # dispatch_id = Column(Integer, ForeignKey("dispatch.id"))
-    dispatch = relationship("Dispatch", back_populates="message")
-    client = relationship("Client", back_populates="message")
+
+    def __repr__(self) -> str:
+        return "{} {}".format(self.id, self.created_at)
+
+
 
 
 

@@ -4,7 +4,7 @@ from typing import Tuple, Union, List, Optional, Generator
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.orm import declared_attr
 
-from apps.db.constants import DEFAULT_PERMISSIONS
+from collections_core.apps.db.constants import DEFAULT_PERMISSIONS
 
 
 
