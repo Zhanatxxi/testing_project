@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "send-message-testing"
+version = "0.1.0"
+description = "send messages for testing"
+authors = ["Zhanat <janat.200066@gmail.com>"]
+readme = "README.md"
+packages = [{include = "send_message_testing"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.89.1"
+aiohttp = "^3.8.3"
+alembic = "^1.9.2"
+pydantic = "^1.10.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "testing.main:main"
