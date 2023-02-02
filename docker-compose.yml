@@ -13,7 +13,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: 1
-      POSTGRES_USER: core
+      POSTGRES_USER: zhanat
     ports:
       - '5432:5432'
     volumes:
