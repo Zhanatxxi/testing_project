@@ -34,6 +34,16 @@ class User(Model):
     @phone_number.expression
     def phone_number(cls) -> str:  # noqa
         return cls._phone_number
+
+    @phone_number.setter
+    def phone_number(self, value: str | PhoneNumber) -> None:
+        """
+        :param value: Принимает значение с типом строка или обьект класса PhoneNumber
+        :return: setter ничег не возвращает
+        """
+        if isinstance(value, PhoneNumber):
+            value = value.as_e164()
+        self._phone_number = value
     
     def __repr__(self) -> str:
         return "id:{} email:{} is_active:{}".format(

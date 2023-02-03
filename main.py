@@ -17,15 +17,9 @@ app = FastAPI(
     version="0.1.0"
 )
 
-app.include_router(
-    dispatcher.router
-)
-app.include_router(
-    client.router
-)
-app.include_router(
-    core.router
-)
+app.include_router(dispatcher.router)
+app.include_router(client.router)
+app.include_router(core.router)
 
 admin = Admin(app, engine)
 admin.add_view(UserAdmin)

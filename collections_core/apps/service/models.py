@@ -37,7 +37,7 @@ class Message(Model):
     status = Column(Boolean, default=False)
 
     def __repr__(self) -> str:
-        return "{} {}".format(self.id, self.created_at)
+        return "id:{} date:{}".format(self.id, self.created_at)
 
 
 

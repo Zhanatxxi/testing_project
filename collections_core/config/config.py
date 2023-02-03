@@ -11,9 +11,9 @@ class Settings(BaseSettings):
 
     PROBE_URL: str = "https://probe.fbrq.cloud/"
 
-    POSTGRES_SERVER: str = "localhost"
-    POSTGRES_USER: str = "zhanat"
-    POSTGRES_PASSWORD: str = "1"
+    POSTGRES_SERVER: str = "db"
+    POSTGRES_USER: str = "postgres"
+    POSTGRES_PASSWORD: str = "postgres"
     POSTGRES_DB: str = "collections_core"
     DB_POOL_SIZE: int = 5
     DB_MAX_OVERFLOW: int = 15

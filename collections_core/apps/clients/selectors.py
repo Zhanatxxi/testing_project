@@ -17,7 +17,14 @@ async def create_client(db: AsyncSession, client: UserSchema) -> User:
         _phone_number=client.phone_number
     )
     db.add(user)
-    db.commit()
+    await db.flush()
+    await db.commit()
+    await db.refresh(user)
     return user
 
+
+async def all_clients(db: AsyncSession):
+    query = select(User.email, User.id, User.id, User.is_active)
+    result = await db.execute(query)
+    return result
 

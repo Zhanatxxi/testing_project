@@ -1,6 +1,6 @@
 from sqladmin import  ModelView
 
-from collections_core.apps.db.base import *
+from collections_core.apps.service.models import Dispatch, Message
 
 
 class DispatcherAdmin(ModelView, model=Dispatch):
